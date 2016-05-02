@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>wihtout Ang</title>
+  </head>
+  <body>
+    <input id="input" type="text" placeholder="What is your name?">
+    <h1>
+      My name is
+      <span id="output">
+
+      </span>
+    </h1>
+
+  <script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
+  <script type="text/javascript">
+
+  $("#input").keypress(function() {
+    $("#output").text($("#input").val());
+  });
+
+  </script>
+  </body>
+</html>
