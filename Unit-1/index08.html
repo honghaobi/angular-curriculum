@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+  <head>
+    <meta charset="utf-8">
+    <title>exercise 08</title>
+    <style>
+      .player1, .player2{
+        width: 150px;
+        height: 150px;
+        background-color: lightblue;
+        color: white;
+      }
+
+      .win{
+        background-color: green;
+      }
+
+      .lose{
+        background-color: red;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div ng-controller="MyController">
+      <h3>The number is: {{view.number}}</h3>
+      <button ng-click="pickRandomNumber()">Pick Random Number</button>
+
+      <br>
+      <br>
+
+      <input type="text" value="{{view.word}}"> {{view.word}}
+      <button ng-click="reverseWord()">Reverse</button>
+
+      <h1>pingpong score keeper</h1>
+      <div class="player1" ng-click="scorePlayer1()" ng-class="{win: player1.score == 11, lose: player2.score == 11}">
+        <h2>player1</h2>
+        <h1>{{player1.score}}</h1>
+        <h3 ng-show="(player1.score + player2.score) % 4 >= 2" >service</h3>
+
+      </div>
+      <div class="player2" ng-click="scorePlayer2()" ng-class="{win: player2.score == 11, lose: player1.score == 11}">
+        <h2>player2</h2>
+        <h1>{{player2.score}}</h1>
+        <h3 ng-hide="(player1.score + player2.score) % 4 >= 2" >service</h3>
+      </div>
+
+      {{player1.score + player2.score}}
+      <button ng-click="reset()">Reset</button>
+
+    </div>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script type="text/javascript">
+  var app = angular.module("firstApp", []);
+
+  app.controller("MyController", function($scope){
+    $scope.view = {};
+    $scope.view.number = 5;
+    $scope.view.word = 'yolo';
+
+    $scope.pickRandomNumber = function() {
+      $scope.view.number = Math.floor(Math.random() * 10) + 1;
+    }
+
+    $scope.reverseWord = function() {
+      $scope.view.word = $scope.view.word.split('').reverse().join('');
+    }
+
+    $scope.player1 = {};
+    $scope.player1.score = 0;
+    $scope.player2 = {};
+    $scope.player2.score = 0;
+
+    $scope.scorePlayer1 = function () {
+      $scope.player1.score += 1;
+      if ($scope.player1.score > 11) {
+        $scope.reset();
+      }
+    }
+
+    $scope.scorePlayer2 = function () {
+      $scope.player2.score += 1;
+      if ($scope.player2.score > 11) {
+        $scope.reset();
+      }
+    }
+
+    $scope.reset = function () {
+      $scope.player1.score = 0;
+      $scope.player2.score = 0;
+    }
+
+  });
+  </script>
+  </body>
+</html>
