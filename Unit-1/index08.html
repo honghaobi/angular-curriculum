@@ -19,6 +19,11 @@
         background-color: red;
       }
 
+      .box{
+        width: 200px;
+        height: 200px;
+        background-color: #c29739;
+      }
     </style>
   </head>
   <body>
@@ -48,12 +53,57 @@
       {{player1.score + player2.score}}
       <button ng-click="reset()">Reset</button>
 
+      <br>
+      <h1>Random Color Generator</h1>
+
+      <div class="box" ng-style="{'background-color':colors[0]}" ng-mouseenter="randomColor()">
+      </div>
+      {{colors[0]}}
+      <button ng-click="replayColor()">Replay Colors</button>
+
+      <br>
+      <br>
+
+      <br>
+      <h2>Contact Form</h2>
+      <br>
+      <br>
+
+      <form ng-submit="submitContact()" name="contactForm">
+        <span class="label">name
+          <input name="name" type="text" ng-model="contact.name">
+        </span>
+        <span class="label">email
+          <input name="email" type="text" ng-model="contact.email">
+        </span>
+        <span class="label">phone number
+          <input name="phone" type="text" ng-model="contact.phone">
+        </span>
+        <input type="submit">
+        Search:
+        <input name="search" type="text" ng-model="contact.search">
+
+      </form>
+      <table>
+          <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+          </tr>
+          <tr ng-repeat="contact in contacts | filter:contact.search">
+              <td>{{contact.name}}</td>
+              <td>{{contact.email}}</td>
+              <td>{{contact.phone}}</td>
+          </tr>
+      </table>
+
+
     </div>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
   <script type="text/javascript">
   var app = angular.module("firstApp", []);
 
-  app.controller("MyController", function($scope){
+  app.controller("MyController", function($scope, $timeout){
     $scope.view = {};
     $scope.view.number = 5;
     $scope.view.word = 'yolo';
@@ -89,6 +139,41 @@
       $scope.player1.score = 0;
       $scope.player2.score = 0;
     }
+
+    $scope.colors = [];
+
+    $scope.randomColor = function () {
+
+      var x = Math.round(0xffffff * Math.random()).toString(16);
+      var y = (6-x.length);
+      var z = "000000";
+      var z1 = z.substring(0,y);
+      var color = "#" + z1 + x;
+      $scope.colors.unshift(color);
+    }
+
+    $scope.replayColor = function () {
+      var displayPrevColor = function (){
+        $scope.colors.shift();
+      }
+      $timeout(function(){
+        displayPrevColor();
+      }, 500);
+    }
+
+    $scope.contacts = [];
+    $scope.submitContact = function() {
+      $scope.contacts.push({
+        name: $scope.contact.name,
+        email: $scope.contact.email,
+        phone: $scope.contact.phone
+      });
+      $scope.contact.name = null;
+      $scope.contact.email = null;
+      $scope.contact.phone = null;
+    };
+
+
 
   });
   </script>
