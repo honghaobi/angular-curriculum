@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div ng-controller="MyFirstController">
+      <h1>My name is : {{name}}</h1>
+      <input ng-model="name" name="name" placeholder="What is your name">
+    </div>
+
+    <div ng-controller="ExerciseController">
+      <h1>My favorite : {{FavColor}}</h1>
+      <h2>{{secondsInACentury}} Seconds in a Century</h2>
+      <h3>{{rightNow|date:'fullDate'}}</h3>
+    </div>
+
+    <div ng-controller="MadLibsController">
+    <h2>MAD LIB</h2>
+    <br>
+    <span class="label">boy name
+      <input type = "text" ng-model="input.boy"/>
+      <br>
+    </span>
+    <span class="label">adjective
+      <input type = "text" ng-model="input.adjective"/>
+      <br>
+    </span>
+    <span class="label">plural noun
+      <input type = "text" ng-model="input.pn1"/>
+      <br>
+    </span>
+    <span class="label">plural noun
+      <input type = "text" ng-model="input.pn2"/>
+      <br>
+    </span>
+    <span class="label">an insect, plural
+      <input type = "text" ng-model="input.insect"/>
+      <br>
+    </span>
+    <span class="label">plural noun
+      <input type = "text" ng-model="input.pn3"/>
+      <br>
+    </span>
+    <span class="label">a verb ending in 's'
+      <input type = "text" ng-model="input.verb"/>
+      <br>
+    </span>
+
+    <input type="button" name="generate" value="generate" ng-click="generate()">
+
+    <input type="button" name="clear" value="clear" ng-click="clear()">
+
+    <h3>I'm in love with {{output.boy || 'boy name'}}. He's so {{output.adjective || 'adjective'}}! He has big flat {{output.pn1 || 'plural noun'}}, and when our {{output.pn2 || 'plural noun'}} meet, I get {{output.insect || 'insect'}} in my stomach. I've fallen for him like a ton of {{output.pn3 || 'plural noun'}}, and he {{output.verb || 'verb'}} for me, too. But I think he's got another girlfriend. What should I do?</h3>
+  </div>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script type="text/javascript" src="06.js"></script>
+  </body>
+</html>
