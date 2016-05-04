@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ngMessages Demo</title>
+
+    <!-- CSS -->
+    <!-- load bootstrap and add some custom css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css">
+    <style>body { padding-top:50px; }</style>
+
+</head>
+<body class="container" ng-app="app" ng-controller="MainCtrl as main">
+
+    <!-- create our form -->
+    <form name="userForm" novalidate>
+
+        <!-- name field -->
+        <div class="form-group" ng-class="{'has-error': userForm.name.$touched && userForm.name.$invalid }">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control"
+              ng-model="main.name"
+              ng-minlength="4"
+              ng-maxlength="10"
+              required>
+
+          <div class="help-block" ng-messages="userForm.name.$error" ng-show="userForm.name.$touched">
+              <div ng-messages-include="messages.html"></div>
+          </div>
+        </div>
+
+        <!-- email field -->
+        <div class="form-group" ng-class="{'has-error': userForm.email.$touched && userForm.email.$invalid }">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control"
+              ng-model="main.email"
+              ng-minlength="4"
+              ng-maxlength="20"
+              required>
+
+          <div class="help-block" ng-messages="userForm.email.$error" ng-show="userForm.email.$touched">
+              <div ng-messages-include="messages.html"></div>
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': userForm.password.$touched && userForm.password.$invalid}">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control"
+              ng-model="main.password"
+              ng-minlength="4"
+              ng-maxlength="20"
+              required>
+
+          <div class="help-block" ng-messages="userForm.password.$error" ng-show="userForm.password.$touched">
+              <div ng-messages-include="messages.html"></div>
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{'has-error': userForm.zip.$touched && userForm.zip.$invalid}">
+          <label>Zip Code</label>
+          <input type="text" name="zip" class="form-control"
+              ng-model="main.zip"
+              ng-pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/"
+              required>
+
+          <div class="help-block" ng-messages="userForm.zip.$error" ng-show="userForm.zip.$touched">
+              <div ng-messages-include="messages.html"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-danger" ng-click='add()'>Submit</button>
+        </div>
+
+    <div ng-repeat="user in users">
+      <div>
+        {{user.name}}
+      </div>
+      <div>
+        {{user.email}}
+      </div>
+      <div>
+        {{user.password}}
+      </div>
+      <div>
+        {{user.zip}}
+      </div>
+    </div>
+
+    </form>
+    <script src="//code.angularjs.org/1.4.0/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+    <script>
+    angular
+        .module('app', ['ngMessages'])
+        .controller('MainCtrl', MainCtrl);
+
+    function MainCtrl($scope) {
+      $scope.users = [];
+
+      $scope.add = function () {
+        $scope.users.push({
+          name: $scope.main.name,
+          email: $scope.main.email,
+          password: $scope.main.password,
+          zip: $scope.main.zip
+        });
+        $scope.main.name = '';
+        $scope.main.email = '';
+        $scope.main.password = '';
+        $scope.main.zip = '';
+      }
+    }
+    </script>
+</body>
+</html>
