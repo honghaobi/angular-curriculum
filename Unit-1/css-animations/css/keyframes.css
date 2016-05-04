@@ -1,0 +1,342 @@
+.well {
+  font-family: monospace;
+  color: blue;
+}
+
+code {
+  font-family: monospace;
+  font-size: 14px;
+  text-align: left;
+}
+.indent-one {
+  padding-left: 20px;
+}
+.indent-two {
+  padding-left: 40px;
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes pulsate {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-o-keyframes pulsate {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes pulsate {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.target{
+  font-size: 10em;
+  color: purple;
+  -webkit-animation: pulsate 3s infinite ease-out;
+  -moz-animation: pulsate 3s infinite ease-out;
+  -o-animation: pulsate 3s infinite ease-out;
+  -ms-animation: pulsate 3s infinite ease-out;
+  animation: pulsate 3s infinite ease-out;
+}
+
+.animation-properties {
+  margin-top: 1.5em;
+}
+
+@-webkit-keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.example-play-state {
+  text-align: center;
+  width: 200px;
+  padding: 20px;
+  margin: 10px 0;
+  background-color: tomato;
+  -webkit-animation: spin 2s ease-in-out infinite;
+  animation: spin 2s ease-in-out infinite;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.example-play-state:hover {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+
+@-webkit-keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.fill {
+  text-align: center;
+  width: 200px;
+  padding: 10px;
+  margin: 20px 0;
+  background-color: tomato;
+}
+
+.example-fill-mode {
+  margin: 2em 0;
+}
+
+.example-fill-mode:hover .fill.none {
+  -webkit-animation: grow 3s;
+  animation: grow 3s;
+}
+
+.example-fill-mode:hover .fill.forwards {
+  -webkit-animation: grow 3s;
+  animation: grow 3s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.example-direction,
+.example-iteration,
+.example-delay {
+  margin-bottom: 2em;
+}
+
+#cloudDark {
+  font-size: 6em;
+  color: rgba(0,0,0,0.5);
+  -webkit-animation: bounceInLeft 4s infinite;
+  animation: bounceInLeft 4s infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+#cloudLight {
+  font-size: 6em;
+  color: rgba(0,0,0,0.3);
+  -webkit-animation: bounceInLeft 4s infinite;
+  animation: bounceInLeft 4s infinite;
+}
+
+@-webkit-keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(480px, 0, 0);
+    transform: translate3d(480px, 0, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(420px, 0, 0);
+    transform: translate3d(420px, 0, 0);
+  }
+
+  100% {
+    -webkit-transform: translate3d(500px, 0, 0);
+    transform: translate3d(500px, 0, 0);
+  }
+}
+
+@keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(480px, 0, 0);
+    transform: translate3d(480px, 0, 0);
+  }
+
+  75% {
+    -webkit-transform: translate3d(420px, 0, 0);
+    transform: translate3d(420px, 0, 0);
+  }
+
+  100% {
+    -webkit-transform: translate3d(500px, 0, 0);
+    transform: translate3d(500px, 0, 0);
+  }
+}
+
+@-webkit-keyframes flash {
+  from, 50%, to {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+@keyframes flash {
+  from, 50%, to {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+.glyphicon.glyphicon-flash {
+  font-size: 5em;
+  color: #ffa500;
+  -webkit-animation: flash 2s ease-in 3s 2;
+  animation: flash 2s ease-in 3s 2;
+}
+
+.example-delay p {
+  color: #83D4C2;
+  font-size: 18px;
+}
+.loading-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: #83D4C2;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  opacity: 0;
+  -webkit-animation: loading 3s infinite forwards;
+  animation: loading 3s infinite forwards;
+}
+
+
+@-webkit-keyframes loading {
+  0% {transform: translateX(0px); opacity: 0;}
+  15% {transform: translateX(75px); opacity: 1;}
+  45% {transform: translateX(75px); opacity: 1;}
+  70%, 100% {transform: translateX(150px); opacity: 0;}
+}
+
+@keyframes loading {
+  0% {transform: translateX(0px); opacity: 0;}
+  15% {transform: translateX(75px); opacity: 1;}
+  45% {transform: translateX(75px); opacity: 1;}
+  70%, 100% {transform: translateX(150px); opacity: 0;}
+}
+
+.loading-dot:nth-of-type(1) {
+  -webkit-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+}
+
+.loading-dot:nth-of-type(2) {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+.loading-dot:nth-of-type(3) {
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.loading-dot:nth-of-type(4) {
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.loading-dot:nth-of-type(5) {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.loading-dot:nth-of-type(6) {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}

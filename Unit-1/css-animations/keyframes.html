@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Keyframes Animations</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/keyframes.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-header">CSS Keyframes Animations</h1>
+      <div class="description row">
+        <h2>What is a Keyframes Animations?</h2>
+        <p>A list of what should happen over the course of the animation. You can specify which properties should change, how, and when.</p>
+        <p>There are 2 basic building blocks to keyframe animations:</p>
+        <ol>
+          <li>Keyframes - define the stages and styles of the animation.</li>
+          <li>Animation Properties - assign @keyfromes to a specific CSS element and define how it is animated.</li>
+        </ol>
+      </div>
+      <div class="row">
+        <h3>#1 Keyframes</h3>
+        <p>Each @keyframes is composed of:</p>
+        <ul>
+          <li>Name of the animation: A name that describes the animation. <em>e.i. pulsate</em></li>
+          <li>States of the animation: Each stage of the animation is represented as a percentage. From (initial stage) 0% to (final stage) 100%. Multiple intermediate states can be added in between.</li>
+          <li>CSS Properties</li>
+        </ul>
+      </div>
+      <div class="row">
+        <p><strong>CSS Syntax (vendor prefix omitted for this demo)</strong></p>
+        <div class="col-sm-4">
+          <ul class="list-unstyled well">
+            <li>@keyframes (name-animation) {</li>
+            <li class="indent-one">(step 1 e.i. 0%) {</li>
+            <li class="indent-two">property: value;</li>
+            <li class="indent-one">}</li>
+            <li class="indent-one">(step 2 e.i. 100%) {</li>
+            <li class="indent-two">property: value;</li>
+            <li class="indent-one">}</li>
+            <li>}</li>
+          </ul>
+        </div>
+        <div class="col-sm-4">
+          <ul class="list-unstyled well">
+            <li>@keyframes pulsate {</li>
+            <li class="indent-one">0% {</li>
+            <li class="indent-two">transform: scale(0.1);</li>
+            <li class="indent-two">opacity: 0;</li>
+            <li class="indent-one">}</li>
+            <li class="indent-one">60% {</li>
+            <li class="indent-two">transform: scale(1.2);</li>
+            <li class="indent-two">opacity: 0.6;</li>
+            <li class="indent-one">}</li>
+            <li class="indent-one">100% {</li>
+            <li class="indent-two">transform: scale(1);</li>
+            <li class="indent-two">opacity: 1;</li>
+            <li class="indent-one">}</li>
+            <li>}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <h3>#2 Animation Properties</h3>
+        <p>Animation properties do 2 things:</p>
+        <ol>
+          <li>Assign the @keyframes to the elements that you want to animate.</li>
+          <li>Define how it is animated.</li>
+          <p class="animation-properties">You must add first two animation properties for the animation to take effect.</p>
+          <ul>
+            <li><strong>animation-name (required)</strong></li>
+            <li><strong>animation-duration (required)</strong></li>
+            <li>animation-timing-function</li>
+            <li>animation-delay</li>
+            <li>animation-iteration-count</li>
+            <li>animation-direction</li>
+            <li>animation-fill-mode</li>
+            <li>animation-play-state</li>
+          </ul>
+        </ol>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <p><strong>CSS Syntax - animation shorthand</strong></p>
+          <ul class="list-unstyled well">
+            <li>.target {</li>
+            <li class="indent-one">color: purple;</li>
+            <li class="indent-one">animation: pulsate 3s infinite ease-out;</li>
+            <li>}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="target glyphicon glyphicon-record"></div>
+      </div>
+      <div class="row">
+        <h3>Additional Animation Properties</h3>
+        <p>You can futher customize and create complex animations using the additional properties.</p>
+        <ol>
+          <li><strong>Animation-timing-function: </strong>defines the speed curve or pace of the animation.
+            <p>As we went over in CSS Transform module, you can specify the timing with predefined timing options: ease, linear, ease-in, ease out, ease-in-out, and cubic-bezier curve for more advanced timing functions.</p>
+            <a href="http://gschool.github.io/css-animations/transform.html">To revivist timing function</a>
+          </li>
+          <li><strong>Animation-delay:  </strong>specifies when the animation should start. This lets the animation sequence begin some time after it's applied to an element.
+            <p>The value is defined in seconds(s) or milliseconds(mil).</p>
+            <div class="example-delay">
+              <p>loading</p>
+              <div class="loading-dot"></div>
+              <div class="loading-dot"></div>
+              <div class="loading-dot"></div>
+              <div class="loading-dot"></div>
+              <div class="loading-dot"></div>
+              <div class="loading-dot"></div>
+            </div>
+          </li>
+          <li><strong>Animation-iteration-count: </strong>specifies the number of times that the animation will play.
+            <p>Possible values: (Note: default is 1)</p>
+            <ul>
+              <li><code>initial(defaults)</code>
+                <p>Sets the iteration count to the default value of 1.</p>
+              </li>
+              <li><code>infinite</code>
+                <p>Repeats forever.</p>
+              </li>
+              <li><code>inherit</code>
+                <p>Inherits the value from the parent.</p>
+              </li>
+            </ul>
+            <div class="example-iteration">
+              <div class="glyphicon glyphicon-flash"></div>
+            </div>
+          </li>
+          <li><strong>Animation-direction: property specifies whether the animation should play forward, reverse, or in alternate cycles.</strong>
+            <p>Possible values: </p>
+            <ul>
+              <li><code>normal(defaults)</code>
+                <p>The animation plays forward each cycle. Each time animation resets to the beginning state (0%) and plays forward again (to 100%).</p>
+              </li>
+              <li><code>reverse</code>
+                <p>The animation plays backwards. On each cycle the animation resets to the end state (100%) and plays backwards (to 0%).</p>
+              </li>
+              <li><code>alternate</code>
+                <p>The animation reverses direction every cycle. On each odd cycle, the animation plays forward (0% to 100%). On each even cycle, the animation plays backwards (100% to 0%).</p>
+              </li>
+              <li><code>alternate-reverse</code>
+                <p>The animation reverses direction every cycle.On each odd cycle, the animation plays in reverse (100% to 0%). On each even cycle, the animation plays forward (0% or 100%).</p>
+              </li>
+            </ul>
+            <div class="example-direction">
+              <div id="cloudLight" class="glyphicon glyphicon-cloud"></div>
+              <div id="cloudDark" class="glyphicon glyphicon-cloud"></div>
+            </div>
+          </li>
+          <li><strong>Animation-fill-mode: </strong>specifies if the animation styles are visible before or after the animation executes.
+            <p>Possible values: (Note: Several values may be given, separated by commas.)</p>
+            <ul>
+              <li><code>forwards</code>
+                <p>After the animation is finished, the styles defined in the final keyframe (100%) are retained by the element.</p>
+              </li>
+              <li><code>backwards</code>
+                <p>Before the animation (during the animation delay), the styles of the initial keyframe (0%) are applied to the element.</p>
+              </li>
+              <li><code>both</code>
+                <p>The animation will follow the rules for both forwards and backwards, extending the animation properties before and after the animation.</p>
+              </li>
+              <li><code>none(default)</code>
+                <p>The animation does not apply any styles to the element, before or after the animation.</p>
+              </li>
+            </ul>
+            <div class="example-fill-mode">
+              <div class="fill none">This grows and goes back</div>
+              <code>.example-fill-mode:hover .fill.none {
+                animation: grow 3s;
+              }</code>
+              <div class="fill forwards">This grows and stays</div>
+              <code>.example-fill-mode:hover .fill.forwards {
+                animation: grow 3s;
+                animation-fill-mode: forwards;
+              }</code>
+            </div>
+          </li>
+          <li><strong>Animation-play-state: </strong>specifies whether the animation is playing or paused.
+            If you are trying to have an element freeze in the last shown frame until we hover over it again, we can apply the animation from teh beginning, with
+            <code>animation-play-state: paused;</code> and just change it on :hover to <code>animation-play-state: running;</code>
+            <div class="example-play-state">Hover over and watch me spin!</div>
+            <code>.example-play-state {
+              animation-play-state: paused;} <br>
+            .example-play-state:hover {
+              animation-play-state: running;}
+            </code>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>
