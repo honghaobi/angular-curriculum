@@ -1,0 +1,76 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,500,300,600,700);
+
+body {
+  font-family: font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: #FFF;
+  background: url('building.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.wrapper {
+  background: rgba(#939bad, 0.43);
+  opacity: 0.9;
+  background: linear-gradient(to bottom right, #5d93ff 0%, #99f6ff 100%);
+  overflow: hidden;
+}
+
+.container,
+.form {
+  z-index: 5;
+}
+
+h1 {
+  font-size: 42px;
+  transition-duration:.6s;
+  transition-timing-function: ease;
+}
+
+input{
+  border: 1px solid rgba(206, 146, 247, 1);
+  background-color: rgba(206, 146, 247, 0.6);
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: #FFF;
+  font-weight: 300;
+  transition: background-color 0.8s, transform 0.4s ease-out;
+}
+
+.input_h {
+  transition: background-color 0.8s, transform 0.4s ease-out;
+  background-color: rgba(206, 146, 247, 1);
+}
+
+.input_f {
+  background-color: #FFF;
+  transform: scaleX(1.1);
+  color: rgba(206, 146, 247, 1);
+}
+
+::-webkit-input-placeholder {
+  color: white;
+}
+
+button {
+  border: 1px solid rgba(206, 146, 247, 1);
+  background-color: rgba(144, 69, 185, 0.82);
+  padding: 10px 15px;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.4s;
+}
+
+
+.button_h {
+  transition: all 0.8s, transform 0.4s ease-out;
+  background-color: #0f1dd7;
+  border: 1px solid #0f1dd7;
+}
