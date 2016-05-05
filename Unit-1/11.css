@@ -13,3 +13,31 @@ select {
 .black {
   color: black;
 }
+
+.ng-enter {
+  animation: fadeIn 1s;
+}
+
+.ng-enter.ng-enter-active {
+  animation: fadeIn 1s;
+}
+
+.ng-leave {
+  animation: fadeOut 1s;
+}
+
+.ng-leave.ng-leave-active {
+  animation: fadeOut 1s;
+}
+
+.comment-show {
+  animation: fadeInRight 1s;
+}
+
+.comment-show.ng-hide {
+  animation: fadeOutRight 1s;
+}
+
+.modal-show {
+  animation: bounceIn 1s;
+}

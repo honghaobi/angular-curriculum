@@ -15,10 +15,10 @@
 }
 
 .ng-leave.ng-leave-active {
-  /*transform:translateX(-100%);*/
+  transform:translateX(-100%);
 }
 
-/*.ng-enter-stagger, .ng-leave-stagger {
+.ng-enter-stagger, .ng-leave-stagger {
   transition-delay: 0.2s;
   transition-duration:0;
-}*/
+}

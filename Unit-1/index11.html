@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
     <link rel="stylesheet" href="11.css">
   </head>
   <body ng-controller="MyController">
@@ -21,7 +22,7 @@
       <div class="top-bar-right">
         <ul class="menu">
           <li>
-            <select name="select" ng-model="view.order">
+            <select name="select" ng-model="view.order" ng-init="view.order = '-votes'">
               <option value="-votes" selected>Sort By Votes</option>
               <option value="date">Sort By Date</option>
               <option value="title">Sort By Title</option>
@@ -32,7 +33,7 @@
       </div>
     </div>
 
-    <div class="reveal" id="submitPost" data-reveal>
+    <div class="reveal modal-show" id="submitPost" data-reveal>
       <h1>Add A Post!</h1>
       <form name="postForm" ng-submit="addPost(newPost)" class="newForm">
         <div class="form-group" ng-class="{'has-error': checkForError(postForm.title), 'has-success': postForm.title.$valid }">
@@ -69,7 +70,7 @@
       </div>
     </div>
 
-    <div class="row medium-10 large-10 columns" ng-repeat="post in view.posts | orderBy:view.order| filter:view.search">
+    <div class="row medium-10 large-10 columns" ng-repeat="post in view.posts | orderBy:view.order | filter:view.search">
       <div class="blog-post callout success">
         <div class="callout secondary">
           <h3>{{ post.title }} <small> 📅 {{ post.date }}</small></h3>
@@ -83,12 +84,12 @@
               <h5>Author By: {{ post.author }}</h5>
               <p>{{ post.description }}</p>
             </div>
-            <div class="callout secondary" ng-show="commentShow">
+            <div class="callout secondary comment-show" ng-show="commentShow">
               <p ng-repeat="comment in post.comments">
                 <strong>{{ comment.author }}</strong> - {{ comment.text }}
               </p>
             </div>
-            <div class="callout secondary" ng-show="addCommentShow">
+            <div class="callout secondary comment-show" ng-show="addCommentShow">
               <h6>Add A Comment!</h6>
               <form ng-submit="addComment(post, newComment)">
                 <div class="form-group">
