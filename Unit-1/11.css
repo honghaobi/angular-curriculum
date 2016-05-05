@@ -1,0 +1,15 @@
+select {
+  margin: 0;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
+}

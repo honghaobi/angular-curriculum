@@ -1,15 +1,7 @@
 var app = angular.module('reddit', ['ngAnimate']);
-
-app.controller('RedditController', function($scope) {
-
-  $scope.newComment = {};
-  $scope.newPost = {};
+app.controller('MyController', function($scope) {
   $scope.view = {};
-  $scope.view.searchText = "";
-  $scope.view.newPostVisible = false;
-  $scope.view.sortableFields = ['votes', 'date', 'title'];
-  $scope.view.currentSort = $scope.view.sortableFields[0];
-  $scope.view.orderVal = '-votes';
+  $scope.newComment = {};
   $scope.view.posts = [
     {
       title: "Monkey costumes are totally in this season",
@@ -23,13 +15,11 @@ app.controller('RedditController', function($scope) {
           author: "Matt",
           text: "Cool costume."
         }
-      ],
-      commentsVisible: false,
-      newCommentVisible: false
+      ]
     }, {
       title: "2016 Baseball",
       author: "Andrew Baggarly",
-      image: "https://pbs.twimg.com/profile_images/632061069205225476/-3wXELim_400x400.jpg",
+      image: "https://punkyg.files.wordpress.com/2012/06/sf-giants-matches-1966.jpg",
       description: "The Giants win it all in even years. Next year is an even year. Therefore, the Giants will win it all next year.",
       date: moment().subtract(2, 'hours').calendar(),
       votes: 2,
@@ -41,9 +31,7 @@ app.controller('RedditController', function($scope) {
           author: "Billy Bean",
           text: "Oakland rulez"
         }
-      ],
-      commentsVisible: false,
-      newCommentVisible: false
+      ]
     }, {
       title: "New Years",
       author: "Ryan Seacrest",
@@ -51,9 +39,7 @@ app.controller('RedditController', function($scope) {
       description: "Come hang out with me on New Year's Eve!",
       date: moment("20151010","YYYYMMDD").calendar(),
       votes: -3,
-      comments: [],
-      commentsVisible: false,
-      newCommentVisible: false
+      comments: []
     }, {
       title: "XKCD",
       author: "Randall Munroe",
@@ -61,57 +47,26 @@ app.controller('RedditController', function($scope) {
       description: "rofl. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum excepturi ad totam autem dignissimos molestiae a consequatur cupiditate, eum enim. Magni expedita, nam in eligendi sed totam fugiat numquam consequatur.",
       date: moment().subtract(14, 'days').calendar(),
       votes: 2,
-      comments: [],
-      commentsVisible: false,
-      newCommentVisible: false
+      comments: []
     }
   ];
-
-  $scope.changeVotes = function(post, changeVal) {
-    post.votes += changeVal;
-  };
-
-  $scope.upvoteClass = function(post) {
-    if (post.votes > 0) {
-      return "positive";
-    } else if (post.votes < 0) {
-      return "negative";
-    } else {
-      return "";
-    }
-  };
-
-  $scope.toggleCommentVisibility = function(post) {
-    post.commentsVisible = !post.commentsVisible;
+  $scope.addPost = function(post) {
+    post.date = moment().calendar();
+    post.votes = 0;
+    post.comments = [];
+    $scope.view.posts.push(post);
+    $scope.newPost = {};
   };
 
   $scope.addComment = function(post, comment) {
     if (comment.author && comment.text) {
       post.comments.push(comment);
-      post.newCommentVisible = false;
       $scope.newComment = {};
     }
   };
 
-  $scope.addPost = function(post) {
-    post.date = moment().calendar();
-    post.votes = 0;
-    post.comments = [];
-    post.commentsVisible = false;
-    post.newCommentVisible = false;
-    $scope.view.posts.push(post);
-    $scope.view.newPostVisible = false;
-    $scope.newPost = {};
-    $scope.postForm.$setUntouched();
-  };
-
   $scope.checkForError = function(field) {
     return field.$invalid && field.$touched;
-  };
-
-  $scope.setOrderVal = function(newVal) {
-    $scope.view.currentSort = newVal;
-    $scope.view.orderVal = newVal === "title" ? newVal : '-' + newVal;
   };
 
 });

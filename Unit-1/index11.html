@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="reddit">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Henry's Reddit Clone</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+    <link rel="stylesheet" href="11.css">
+  </head>
+  <body ng-controller="MyController">
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">Henry's Reddit</li>
+          <li><button type="button" class="button" data-open="submitPost" >+Submit Post+</button></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li>
+            <select name="select" ng-model="view.order">
+              <option value="-votes" selected>Sort By Votes</option>
+              <option value="date">Sort By Date</option>
+              <option value="title">Sort By Title</option>
+            </select>
+          </li>
+          <li><input type="search" placeholder="Search" ng-model="view.search"></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reveal" id="submitPost" data-reveal>
+      <h1>Add A Post!</h1>
+      <form name="postForm" ng-submit="addPost(newPost)" class="newForm">
+        <div class="form-group" ng-class="{'has-error': checkForError(postForm.title), 'has-success': postForm.title.$valid }">
+          <label for="title" ng-class="{'text-danger': checkForError(postForm.title), 'text-success': postForm.title.$valid }">Title</label>
+          <input type="text" class="form-control" name="title" placeholder="Title" ng-model="newPost.title" required>
+          <p ng-show="checkForError(postForm.title)" class="help-block">Where's yo title?</p>
+        </div>
+        <div class="form-group" ng-class="{'has-error': checkForError(postForm.author), 'has-success': postForm.author.$valid }">
+          <label for="author" ng-class="{'text-danger': checkForError(postForm.author), 'text-success': postForm.author.$valid }">Author</label>
+          <input type="text" class="form-control" name="author" placeholder="Author" ng-model="newPost.author" required>
+          <p ng-show="checkForError(postForm.author)" class="help-block">Who are you?</p>
+        </div>
+        <div class="form-group" ng-class="{'has-error': checkForError(postForm.image), 'has-success': postForm.image.$valid }">
+          <label for="image" ng-class="{'text-danger': checkForError(postForm.image), 'text-success': postForm.image.$valid }">Image URL</label>
+          <input type="text" class="form-control" name="image" placeholder="Image URL" ng-model="newPost.image" required>
+          <p ng-show="checkForError(postForm.image)" class="help-block">Yo gotta Picture?</p>
+        </div>
+        <div class="form-group" ng-class="{'has-error': checkForError(postForm.description), 'has-success': postForm.description.$valid }">
+          <label for="description" ng-class="{'text-danger': checkForError(postForm.description), 'text-success': postForm.description.$valid }">Description</label>
+          <input type="text" class="form-control" name="description" placeholder="Description" ng-model="newPost.description" required>
+          <p ng-show="checkForError(postForm.description)" class="help-block">Hey! What are your deepest thoughts?</p>
+        </div>
+        <input type="submit" class="button" value="Add Post" data-close>
+      </form>
+      <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="callout medium primary">
+      <div class="row column text-center">
+        <h2>Henry's Reddit</h2>
+        <h3 class="subheader">the best front page of the internet</h3>
+      </div>
+    </div>
+
+    <div class="row medium-10 large-10 columns" ng-repeat="post in view.posts | orderBy:view.order| filter:view.search">
+      <div class="blog-post callout success">
+        <div class="callout secondary">
+          <h3>{{ post.title }} <small> 📅 {{ post.date }}</small></h3>
+        </div>
+        <div class="row">
+          <div class="medium-4 columns">
+            <img class="thumbnail" ng-src="{{ post.image }}">
+          </div>
+          <div class="medium-8 columns">
+            <div class="callout secondary">
+              <h5>Author By: {{ post.author }}</h5>
+              <p>{{ post.description }}</p>
+            </div>
+            <div class="callout secondary" ng-show="commentShow">
+              <p ng-repeat="comment in post.comments">
+                <strong>{{ comment.author }}</strong> - {{ comment.text }}
+              </p>
+            </div>
+            <div class="callout secondary" ng-show="addCommentShow">
+              <h6>Add A Comment!</h6>
+              <form ng-submit="addComment(post, newComment)">
+                <div class="form-group">
+                  <label for="author">Author</label>
+                  <input type="text" placeholder="author" ng-model="newComment.author">
+                </div>
+                <div class="form-group">
+                  <label for="text">Comment</label>
+                  <input type="text" placeholder="text" ng-model="newComment.text">
+                </div>
+                <input type="submit" class="button" value="Add Comment" ng-click="addCommentShow = false; commentShow = true">
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="callout secondary">
+          <a ng-click="post.votes = post.votes + 1"> ▲ </a>
+          <a ng-click="post.votes = post.votes - 1"> ▼ </a>
+          <span ng-class="{'green': post.votes > 0, 'red': post.votes < 0 , 'black': post.votes == 0 }">{{ post.votes }}</span>
+          <div class="top-bar-right">
+            <button type="button" class="primary button small" ng-click="commentShow = !commentShow">Show Comments</button>
+            <button type="button" class="success button small" ng-click="addCommentShow = !addCommentShow">Add Comment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="11.js"></script>
+  </body>
+</html>
