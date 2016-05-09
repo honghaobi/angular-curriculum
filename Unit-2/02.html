@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="applydigest">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body >
+  <div>
+    From $rootScope: {{rootView.name}}
+  </div>
+  <div ng-controller="MainController">
+    From $scope: {{view.age}}
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script>
+  angular.module("applydigest", []).controller("MainController", function($rootScope, $scope) {
+    $rootScope.rootView = {};
+    $rootScope.rootView.name = "Fido";
+    $scope.view = {};
+    $scope.view.age = 3;
+
+    // this is for example purposes
+    // NOTE - there is a $timeout which handles $apply for you
+    setTimeout(function() {
+      $rootScope.rootView.name = "Steve";
+      $scope.view.age = 7;
+      $scope.$digest();
+      // $scope.$apply();
+    }, 1000);
+  });
+  </script>
+</body>
+</html>
