@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body >
+  <div>
+    From $rootScope: {{rootView.val}}
+  </div>
+  <div ng-controller="SampleController">
+    From $scope: {{view.val}}
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script>
+  angular.module("app", []).controller('SampleController', function($scope, $rootScope){
+    $rootScope.rootView = {};
+    $scope.view = {};
+    $scope.view.val = "some value from $scope";
+    $rootScope.rootView.val = "some value from $rootScope";
+  });
+  </script>
+</body>
+</html>

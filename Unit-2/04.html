@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>custom filters</title>
+</head>
+<body>
+  <div>
+    <h2>camel case filter</h2>
+    {{"party on gang" | kebab}}
+    <br>
+    <h2>pig latin filter</h2>
+    {{"party on gang" | pigLatin}}
+    <br>
+    <h2>redact filter</h2>
+    {{"My dog Rusty is adorable" | redact: "Rusty"}}
+    <br>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="filter.js"></script>
+</body>
+</html>
