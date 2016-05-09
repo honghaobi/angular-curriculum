@@ -1,5 +1,5 @@
 var app = angular.module('reddit', ['ngAnimate']);
-app.controller('MyController', function($scope) {
+app.controller('MyController', function($scope, $http) {
   $scope.view = {};
   $scope.newComment = {};
   $scope.view.posts = [
@@ -68,5 +68,33 @@ app.controller('MyController', function($scope) {
   $scope.checkForError = function(field) {
     return field.$invalid && field.$touched;
   };
+
+  //Never use Jquery!!!
+  // $.get('https://www.reddit.com/.json').done(function(result){
+  //   $scope.redditPosts = result.data.children;
+  //   console.log(result);
+  //   $scope.$apply();
+  // });
+
+  $http.get('https://www.reddit.com/.json').then(function(result){
+    var posts = result.data.data.children;
+    console.log(posts);
+    for (var i = 0; i < posts.length; i++) {
+      $scope.view.posts.push({
+        title: posts[i].data.title,
+        author: posts[i].data.author,
+        image: posts[i].data.thumbnail,
+        description: 'yolo',
+        date: posts[i].data.created_utc,
+        votes: posts[i].data.ups,
+        comments: []
+      })
+    }
+  });
+
+  //watched search bar input
+  // $scope.$watch("view.search", function(newVal, oldVal){
+  //   console.log('changed from', newVal, 'to', oldVal);
+  // });
 
 });
