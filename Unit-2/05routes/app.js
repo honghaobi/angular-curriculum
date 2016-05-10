@@ -10,4 +10,7 @@ angular.module("app", ['ngRoute'])
       templateUrl: 'partials/dogs.html',
       controller: 'DogController'
     })
+    .otherwise({
+      redirectTo: '/'
+    });
 });
