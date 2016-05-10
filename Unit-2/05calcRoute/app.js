@@ -8,6 +8,7 @@ angular.module("app", ['ngRoute'])
       templateUrl: 'calc.html',
       controller: 'CalcQueryController'
     });
+  $locationProvider.html5Mode(true);
 })
 .controller('CalcParamsController', function($scope, $routeParams){
     var operator = {
