@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app' ng-controller='httpController as httpCTRL'>
+<head>
+  <meta charset="UTF-8">
+  <title>Get Post App</title>
+  <base href="/">
+</head>
+<body>
+  <button href="" ng-click='httpCTRL.requestData()'>request</button>
+
+  <form novalidate class="simple-form">
+    Name: <input type="text" ng-model="httpCTRL.name" /><br />
+    Content: <input type="text" ng-model="httpCTRL.content" /><br />
+    <input type="submit" ng-click="httpCTRL.postData()" value="Post" />
+  </form>
+  <h2>data:</h2>
+  <div ng-repeat='item in httpCTRL.data'>
+        {{item.name}} says:{{item.content}}
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
