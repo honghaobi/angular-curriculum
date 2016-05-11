@@ -23,11 +23,8 @@
           return Math.pow(num1, num2);
         },
         calculate: function(num1, num2, operator){
-          if (this[operator]) {
-            return this[operator](num1, num2);
-          } else {
-            return null;
-          }
+          return this[operator](num1, num2);
+        
         }
       };
     }
