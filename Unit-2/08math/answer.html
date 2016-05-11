@@ -1,0 +1,14 @@
+<input type="number" ng-model="Answer.num1" value="1">
+<select name="select" ng-model="Answer.operator">
+  <option value="add" selected>Add</option>
+  <option value="subtract">Subtract</option>
+  <option value="multiply">Multiply</option>
+  <option value="divide">Divide</option>
+  <option value="power">Power</option>
+</select>
+<input type="number" ng-model="Answer.num2" value="1">
+<button class="button" ng-click="Answer.calculate()">Calculate</button>
+
+<div>
+  Answer is {{Answer.answer}}
+</div
