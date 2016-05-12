@@ -3,13 +3,24 @@ Name:
 <input type="text" ng-model="Contact.name" value="henry">
 email:
 <input type="email" ng-model="Contact.email" value="henrybi@uw.edu">
-<button class="button" ng-click="Contact.addContact(Contact.name, Contact.email)">Add Contact </button>
+<button class="button" ng-click="Contact.addContact(Contact.name, Contact.email)">Add Contact
+</button>
 
 <br>
 Find By Name:
 <input type="text" ng-model="Contact.search" value="henry">
 
-<div ng-repeat="contact in Contact.contacts | filter:Contact.search">
-  name:{{contact.name}} email:{{contact.email}}
-  <button ng-click="Contact.removeContact(contact.name)">Remove Contact</button>
-</div>
+<table border="1">
+    <thead>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Gif</td>
+        <td>Remove</td>
+    </tr>
+    <tr ng-repeat="contact in Contact.contacts | filter:Contact.search">
+        <td>{{contact.name}}</td>
+        <td>{{contact.email}}</td>
+        <td><img width="200px" ng-src="{{contact.gif}}" alt="gif"/></td>
+        <td>    <button ng-click="Contact.removeContact(contact.name)">Remove Contact</button></td>
+    </tr>
+</table>
