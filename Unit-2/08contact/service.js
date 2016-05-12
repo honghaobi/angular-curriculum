@@ -18,7 +18,6 @@
         $http.get(`http://api.giphy.com/v1/gifs/search?q=${name}&api_key=dc6zaTOxFJmzC`)
           .then(function(data){
             ContactList.contactList[ContactList.contactList.length - 1].gif = data.data.data[0].images.downsized.url;
-            console.log(ContactList.contactList);
         });
       };
       ContactList.removeContact = function(name){
