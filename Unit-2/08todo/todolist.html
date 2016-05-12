@@ -1,0 +1,11 @@
+<h1>Add A New Todo</h1>
+<input type="text" ng-model="todoItem" value="party">
+<button class="button" ng-click="Todo.addTodo(todoItem)">Add Todo</button>
+
+<div ng-repeat="todo in Todo.todos">
+  {{todo}}
+  <button ng-click="show = !show">edit</button>
+  <input ng-show="show" type="text" ng-init="editedTodo = todo" ng-model="editedTodo" >
+  <button ng-show="show" ng-click="Todo.editTodo(todo,editedTodo)">edit</button>
+  <button ng-click="Todo.deleteTodo(todo)">delete</button>
+</div>
