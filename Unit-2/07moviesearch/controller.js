@@ -7,7 +7,6 @@ function MainController($http) {
     $http.get(`http://www.omdbapi.com/?s=${vm.input}&type=${vm.type}`)
       .then(function(data){
         vm.movies = data.data.Search;
-        console.log(vm.movies[0].Poster);
     });
   }
   vm.movieRequest = function(movieID){
