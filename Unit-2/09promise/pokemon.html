@@ -1,14 +1,26 @@
 <h1>Catch Them All</h1>
 <input type="number" ng-model="pokemonId" value="1">
-<button class="button" ng-click="Poke.catchEm(pokemonId)">Get Pokemon </button>
-<br>
+<button class="button" ng-click="Poke.catchEm(pokemonId)">Get Pokemon
+</button>
 
-<img ng-src="" alt="" />
 <br>
-Name ==> {{Poke.pokeData.name}}
+<img ng-src={{Poke.pokeData.spritesImg}} alt="pokemon"/>
 <br>
-Species ==> {{Poke.pokeData.species}}
+Name ==>
+{{Poke.pokeData.name}}
 <br>
-Speed ==> {{Poke.pokeData.speed}}
+Speed ==>
+{{Poke.pokeData.speed}}
 <br>
-Weight ==> {{Poke.pokeData.weight}}
+Weight ==>
+{{Poke.pokeData.weight}}
+<br>
+<div ng-repeat="type in Poke.pokeData.types ">
+  Type ==>
+  {{type.name}}
+</div>
+<br>
+Move ==>
+<span ng-repeat="move in Poke.pokeData.moves ">
+  {{move.name}},
+</span>

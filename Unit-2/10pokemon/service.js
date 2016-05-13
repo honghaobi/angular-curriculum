@@ -7,9 +7,10 @@
 
         var baseUrl = 'http://pokeapi.co/';
         var pokemonInfoPath = 'api/v1/pokemon/';
-        this.catchEm = function(pokemonId) {
+        this.catchEm = function() {
+          var randomPokemon = Math.floor(Math.random() * 543);
           var pokeData = {};
-          var fullUrl = baseUrl + pokemonInfoPath + pokemonId + '/';
+          var fullUrl = baseUrl + pokemonInfoPath + randomPokemon + '/';
           return $http.get(fullUrl).then(function(baseData) {
             pokeData = baseData.data;
             return pokeData

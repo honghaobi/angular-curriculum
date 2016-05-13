@@ -1,0 +1,24 @@
+
+<div ng-repeat = 'Poke in Poke.pokeArray'>
+
+  <img ng-src={{Poke.spritesImg}} alt="pokemon"/>
+  <br>
+  Name ==>
+  {{Poke.name}}
+  <br>
+  Speed ==>
+  {{Poke.speed}}
+  <br>
+  Weight ==>
+  {{Poke.weight}}
+  <br>
+  <div ng-repeat="type in Poke.types ">
+    Type ==>
+    {{type.name}}
+  </div>
+  <br>
+  Move ==>
+  <span ng-repeat="move in Poke.moves ">
+    {{move.name}},
+  </span>
+</div>
