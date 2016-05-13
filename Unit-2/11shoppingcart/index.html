@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+  <meta charset="UTF-8">
+  <title>11 Shopping Car App</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/sweetalert/dist/sweetalert.css">
+  <base href="/">
+</head>
+<body ng-controller="MenuController as Menu">
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">
+          <a href="/">Home</a></li>
+        <li class="menu-text">About</li>
+        <li class="menu-text">Contact</li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li class="menu-text">
+          Search By Category:
+        </li>
+        <li class="menu-text">
+          <select ng-model="Menu.catergorySelect">
+            <option value="">
+              All
+            </option>
+            <option ng-repeat="category in Menu.allCategory" value={{category}}>{{category}}</option>
+
+          </select>
+        </li>
+        <li class="menu-text"><input type="search" placeholder="Search" ng-model="Menu.search"></li>
+        <li class="menu-text"><a href="/cart" class="warning button">Check Out Yo Cart ({{Menu.cart.length}})</a></li>
+        <li class="menu-text"><a href="#" class="success button" ng-click="Menu.pay()">Pay Yo Shit </a></li>
+      </ul>
+
+    </div>
+  </div>
+
+
+  <div ng-view></div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+  <script src="app.js"></script>
+  <script src="routes.js"></script>
+  <script src="service.js"></script>
+  <script src="controller.js"></script>
+</body>
+</html>
