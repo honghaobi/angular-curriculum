@@ -23,7 +23,21 @@
     <div class="top-bar-right">
       <ul class="menu">
         <li class="menu-text">
-          Search By Category:
+          By Price:
+        </li>
+        <li class="menu-text">
+          <select ng-model="Menu.orderByPrice">
+            <option value="-price">
+              Expensive
+            </option>
+            <option value="price">
+              Cheap
+            </option>
+
+          </select>
+        </li>
+        <li class="menu-text">
+          By Category:
         </li>
         <li class="menu-text">
           <select ng-model="Menu.catergorySelect">
@@ -58,5 +72,6 @@
   <script src="routes.js"></script>
   <script src="service.js"></script>
   <script src="controller.js"></script>
+  <script src="directive.js"></script>
 </body>
 </html>

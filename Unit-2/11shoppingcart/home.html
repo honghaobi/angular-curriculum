@@ -1,10 +1,10 @@
-<div class="expanded row callout" ng-repeat="item in Home.items | filter: Menu.catergorySelect | filter: Menu.search">
+<div class="expanded row callout" ng-repeat="item in Home.items | filter: Menu.catergorySelect | filter: Menu.search | orderBy: Menu.orderByPrice">
 
   <div class="medium-4 columns">
     <h3>{{item.name}}</h3>
     <img ng-src="{{item.imageUrl}}" alt="tea" />
   </div>
-  <div class="medium-6 columns">
+  <div class="medium-5 columns">
     <strong>Categories:</strong>
       <div ng-repeat="category in item.categories">
         {{category}}
@@ -12,15 +12,35 @@
     <strong>Ingredients:</strong><p>{{item.ingredients}}</p>
     <strong>Price:</strong><p>{{item.price|currency:symbol}}</p>
     <strong>Rating:</strong><p>{{item.rating}}</p>
-    <div ng-show="{{item.inStock}}">
+    <div class="instock" ng-show="{{item.inStock}}">
       Instock
     </div>
     <div>
       {{item.id}}
     </div>
   </div>
-  <div class="medium-2 columns callout secondary">
-    <h3><input type="number" value="1" ng-model='quantity'></h3>
-    <button class="success button" ng-click="Home.addToCart(item.name, quantity, item.price, item.imageUrl)">Add To Cart</button>
+  <div class="medium-3 columns callout secondary">
+
+    <div class="input-group">
+      <input class="input-group-field" type="number" value="1" ng-model='quantity'>
+      <div class="input-group-button">
+        <input type="submit" class="success button" value="Add To Cart" ng-click="Home.addToCart(item.name, quantity, item.price, item.imageUrl)">
+      </div>
+    </div>
+
+    <div class="callout success">
+      <h4>Caffeine</h4>
+      mg/serving: {{item.caffeineScale}}
+      <caffeine-meter></caffeine-meter>
+      <div class="rating">
+        Rating:
+        <span ng-show="item.caffeineScale>180">
+          High
+        </span>
+        <span ng-show="item.caffeineScale<180">
+          Low
+        </span>
+      </div>
+    </div>
   </div>
 </div>
