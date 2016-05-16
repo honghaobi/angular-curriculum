@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app="mouseOverDirectiveApp">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js" type="text/javascript"></script>
+        <script src="app.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div gs-change-background style="background-color: red">Hello World!</div>
+
+        <gs-change-background
+          hoover-color="purple" hoover-text-color="yellow"
+          style="background-color: blue">YoLo!!!! </gs-change-background>
+    </body>
+</html>
