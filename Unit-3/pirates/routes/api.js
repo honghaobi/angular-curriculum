@@ -6,10 +6,14 @@ function Pirates() {return knex('all_pirates');}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log('routes working');
   Pirates().select().then(function(pirates){
-    console.log(pirates);
     res.json(pirates);
+  });
+});
+
+router.post('/', function(req, res, next) {
+  Pirates().insert(req.body).then(function(){
+    res.send(200);
   });
 });
 

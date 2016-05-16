@@ -13,6 +13,11 @@
                 controllerAs: "Pirates",
                 controller: "PiratesController"
             })
+            .when('/new', {
+                templateUrl: "views/new.html",
+                controllerAs: "Pirates",
+                controller: "PiratesController"
+            })
             .otherwise({
                 redirectTo: '/'
             });

@@ -1,10 +1,8 @@
 <h1>Pirates</h1>
-
-
 <div class="row well well-lg">
-  <div class="col-md-3" ng-repeat="pirate in Pirates.pirates">
+  <div class="col-md-4" ng-repeat="pirate in Pirates.pirates">
     <h1>{{pirate.name}}</h1>
-    <img width="200px" class="img-rounded" ng-src={{pirate.image_url}}>
+    <img width="300px" class="img-rounded" ng-src={{pirate.image_url}}>
       <h3>Accesory: {{pirate.accesory}}</h3>
       <h3>Poison: {{pirate.poison}}</h3>
     </div>

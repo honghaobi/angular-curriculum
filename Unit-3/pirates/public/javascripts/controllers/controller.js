@@ -10,9 +10,9 @@
     function PiratesController(pirateService) {
       var vm = this;
       vm.getPirates = pirateService.all().then(function(data){
-        console.log(data.data);
         vm.pirates = data.data;
       });
+      vm.create = pirateService.createNewPirate;
     }
 
 })();
