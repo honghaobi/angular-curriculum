@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html ng-app="mouseOverDirectiveApp">
+<html ng-app="circleApp">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js" type="text/javascript"></script>
         <script src="app.js" type="text/javascript"></script>
+        <style>
+            .die {
+                width: 200px;
+                height: 200px;
+                background-color: white;
+                border-color: black;
+                border-width: 20px;
+                border-style: solid;
+                border-radius: 10%;
+                line-height: 200px;
+                text-align: center;
+                text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+                font-size: 200px;
+                font-family: monospace;
+            }
+
+        </style>
     </head>
     <body>
-        <div gs-change-background style="background-color: red">Hello World!</div>
-
-        <gs-change-background
-          hoover-color="purple" hoover-text-color="yellow"
-          style="background-color: blue">YoLo!!!! </gs-change-background>
+        <gs-die></gs-die>
     </body>
 </html>
