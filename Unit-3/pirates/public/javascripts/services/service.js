@@ -3,11 +3,13 @@
 
     angular
         .module("pirates")
-        .service("pirateService", pirateService);
+        .factory("pirateService", pirateService);
 
-    function pirateService() {
-      var pirateService = {};
-
-      return pirateService;
-    };
+    function pirateService($http) {
+      return {
+        all: function() {
+          return $http.get('/api/pirates');
+        }
+      }
+    }
 })();
