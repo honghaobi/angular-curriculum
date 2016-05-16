@@ -17,4 +17,16 @@ router.post('/', function(req, res, next) {
   });
 });
 
+router.put('/:id', function(req, res, next) {
+  Pirates().where({id:req.params.id}).update(req.body).then(function(){
+    res.send(200);
+  });
+});
+
+router.delete('/:id', function(req, res, next) {
+  Pirates().del().where({id:req.params.id}).then(function(){
+    res.send(200);
+  });
+});
+
 module.exports = router;

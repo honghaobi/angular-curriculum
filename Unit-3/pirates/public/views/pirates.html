@@ -5,6 +5,30 @@
     <img width="300px" class="img-rounded" ng-src={{pirate.image_url}}>
       <h3>Accesory: {{pirate.accesory}}</h3>
       <h3>Poison: {{pirate.poison}}</h3>
-    </div>
+
+      <button class="btn btn-warning" ng-click="show = !show">Edit Pirate</button>
+      <div ng-show='show'>
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" ng-model="pirate.name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="accesory">Accesory</label>
+            <input type="text" ng-model="pirate.accesory" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="poison">Poison</label>
+            <input type="text" ng-model="pirate.poison" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="img">Img_url</label>
+            <input type="text" ng-model="pirate.image_url" class="form-control">
+          </div>
+        <button ng-click="Pirates.update(pirate.name, pirate.accesory, pirate.poison, pirate.image_url, pirate.id)" type="submit" class="btn btn-success">Edit Your Pirate</button>
+        </form>
+
+      </div>
+      <button class="btn btn-danger" ng-click="Pirates.delete(pirate.id)">Delete Pirate</button>
   </div>
 </div>

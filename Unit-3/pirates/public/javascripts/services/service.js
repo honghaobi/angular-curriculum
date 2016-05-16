@@ -5,7 +5,7 @@
         .module("pirates")
         .factory("pirateService", pirateService);
 
-    function pirateService($http) {
+    function pirateService($http, $location) {
       return {
         all: function() {
           return $http.get('/api/pirates');
@@ -14,9 +14,17 @@
           var data = {
             name, accesory, poison, image_url
           }
-          $http.post('/api/pirates', data);
+          return $http.post('/api/pirates', data);
+        },
+        updatePirate: function(name, accesory, poison, image_url, id) {
+          var data = {
+            name, accesory, poison, image_url
+          }
+          return $http.put('/api/pirates/'+ id, data);
+        },
+        deletePirate: function(id){
+          return $http.delete('/api/pirates/' + id);
         }
-
       }
     }
 })();
