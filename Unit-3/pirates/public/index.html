@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
 
+  <base href="/" target="_blank" />
   </head>
   <body ng-app='pirates'>
     <nav class="navbar navbar-default">
@@ -23,12 +25,15 @@
       </div>
     </nav>
 
-    {{1+3}}
+    <ng-view  onload=""  $autoscroll=""></ng-view>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="javascripts/app.js"></script>
+    <script src="javascripts/routes.js"></script>
+    <script src="javascripts/services/service.js"></script>
+    <script src="javascripts/controllers/controller.js"></script>
   </body>
 </html>
