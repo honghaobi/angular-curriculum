@@ -2,7 +2,7 @@
     'use strict'
 
     angular
-        .module("pirates", ['ngRoute'])
+        .module("pirates", ['ui.router'])
         .config(config);
 
     config.$inject = ['$locationProvider'];
