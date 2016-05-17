@@ -13,7 +13,7 @@ app.controller('IcecreamController', ['$scope', 'icecreamService', function($sco
   $scope.toggleNewFormView = function() {
     $scope.view.newFormVisible = !$scope.view.newFormVisible;
   };
-  
+
   $scope.add = function(icecream) {
     icecreamService.createIcecream(icecream).then(function(res) {
       $scope.view.newFormVisible = false;
@@ -31,10 +31,10 @@ app.controller('IcecreamController', ['$scope', 'icecreamService', function($sco
 }]);
 
 app.controller('IcecreamEditController', ['$scope', 'icecreamService', function($scope, icecreamService) {
-  
+
   $scope.view = {};
   $scope.view.editing = false;
-  
+
   $scope.toggleEditing = function() {
     $scope.view.editing = !$scope.view.editing;
   };
